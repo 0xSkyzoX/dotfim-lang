@@ -4,7 +4,6 @@ const dir = path.join(__dirname, '../app');
 const routeDir = fs.readdirSync(dir);
 const FunctionHandler = require('./System/function');
 const HTTPServer = require('./System/http')
-
 routeDir.forEach(async route => {
     if (route.endsWith('.fim')) {
         const file = Buffer.from(fs.readFileSync(path.join(dir, route)), 'hex').toString('utf-8').split(/\r\n/);
@@ -47,12 +46,12 @@ routeDir.forEach(async route => {
                     const response_index = words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").indexOf('response:')
                     const path = words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(1, response_index).join("").split('"').join("")
                     const response = words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(response_index + 1).join(" ").split('"').join("")
-                    if (words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(1, response_index).join("").startsWith('"') && words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(1, response_index).join("").endsWith('"') 
-                    || words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(response_index+1).join("").startsWith('"') && words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(response_index+1).join("").endsWith('"')) {
+                    if (words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(1, response_index).join("").startsWith('"') && words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(1, response_index).join("").endsWith('"')
+                        || words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(response_index + 1).join("").startsWith('"') && words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(response_index + 1).join("").endsWith('"')) {
                         http.createRoute(path, response.trim())
                     } else {
                         const path = vars.find(_var => _var.name == words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ").slice(1, response_index).join(""))
-                        const response = vars.find(_var => _var.name == words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ")[response_index+1])
+                        const response = vars.find(_var => _var.name == words.slice(index + 1).join(" ").replace(/[{}]/g, '').split(" ")[response_index + 1])
                         http.createRoute(path.content.trim() || path.trim(), response.content.trim() || response.trim())
                     }
                 }

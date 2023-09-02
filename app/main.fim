@@ -8,4 +8,4 @@ CREATE_ROUTE {path: "/app" response: "Hello World"}
 
 CREATE_ROUTE {path: "/" response: "Index Route Route!"}
 
-CREATE_ROUTE {path: login_path  response: login }
+CREATE_ROUTE {path: login_path  response: login}
