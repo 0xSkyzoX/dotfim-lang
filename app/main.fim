@@ -1,11 +1,6 @@
-var startup_message = "Server Started"
+var startup_message = !name: ""!
 var login = "This is login Route"
 var login_path = "/login"
 
 CREATE_SERVER "5000" startup_message
-
-CREATE_ROUTE {path: "/app" response: "Hello World"}
-
-CREATE_ROUTE {path: "/" response: "Index Route Route!"}
-
-CREATE_ROUTE {path: login_path  response: login}
+CREATE_ROUTE !path: login_path, response: "Barron!"!
