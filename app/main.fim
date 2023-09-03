@@ -1,7 +1,1 @@
-var callback = "Hello World"
-var login = "This is login Route"
-var login_path = "/login"
-
-CREATE_SERVER "5000" callback
-
-CREATE_ROUTE {path: login_path, response: "Barron!"}
+print "Hello World"

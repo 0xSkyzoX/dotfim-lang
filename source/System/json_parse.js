@@ -3,7 +3,7 @@ function ParseToJson(object, vars) {
     var result = {}
     if (_object_string.startsWith('{') && _object_string.endsWith('}')) {
         const args = _object_string.replace(/[{}]/g, '')
-        const object_args = args.split(":").join(" ").split(",")
+        const object_args = args.split("=").join(" ").split(".")
         object_args.forEach((section) => {
             const contents = section.trim().split(" ").slice(1).join(" ").trim();
             const object_name = section.trim().split(" ")[0]
@@ -17,4 +17,5 @@ function ParseToJson(object, vars) {
         return result
     }
 }
+
 module.exports = ParseToJson

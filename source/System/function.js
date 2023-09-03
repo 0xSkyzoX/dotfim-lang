@@ -24,8 +24,12 @@ class FunctionHandler {
         };
     };
     call(functionName) {
+            const findFunctionMemory = this.funcs.find((func) => func.name = functionName);
+            return findFunctionMemory
+    }
+    find(functionName) {
         const findFunctionMemory = this.funcs.find((func) => func.name = functionName);
-        
+        return findFunctionMemory ? true : false
     };
 };
 

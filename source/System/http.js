@@ -31,7 +31,7 @@ class HTTPServer {
     http = new http.createServer((req, res) => {
         const path = req.url
         const route = routes.find(route => ConvertPath(route.path) === ConvertPath(path));
-        console.log(routes)
+        
         if (route) {
             res.writeHead(200, {"Content-Type": "text/plain"})
             res.write(route.response)
