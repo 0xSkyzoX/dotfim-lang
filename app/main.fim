@@ -1,13 +1,12 @@
 var login_route = {path="/app". response="Application Path"}
 var index = {path="/". response="This is index path"}
-
+var welcome = {name="Badr Eddarif"}
 CREATE_SERVER "3000" default
+
 CREATE_ROUTE login_route
+
 CREATE_ROUTE index
+
 CREATE_ROUTE {path="/fim". response="This is FIM Framework"}
 
-func GET [
-    var _GET = {path="/discord". response="This is Discord PATH!"}
-    CREATE_ROUTE _GET
-]
-call GET
+print welcome.name

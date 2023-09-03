@@ -8,13 +8,16 @@ const ParseToJson = require('./System/json_parse');
 const PortCheck = require('./System/PortCheck');
 var vars = [];
 var funcs = [];
-
+var memory = [];
 
 routeDir.forEach(async route => {
     if (route.endsWith('.fim')) {
         const file = Buffer.from(fs.readFileSync(path.join(dir, route)), 'hex').toString('utf-8').split(/\r\n/);
         file.forEach((line, _index) => {
-
+            var _funcs = []
+            if (line.split(" ").join("").trim().startsWith("func")) {
+                return
+            }
             const words = line.split(' ');
             const http = new HTTPServer(line, words, file, _index)
             words.forEach((word, index) => {
