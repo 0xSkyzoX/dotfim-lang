@@ -1,3 +1,5 @@
 func _STDLIB [
     var DEFAULT_SYSTEM = {port="3000". listen_message= "Server Started"}
 ]
+
+call _STDLIB
